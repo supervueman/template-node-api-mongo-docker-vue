@@ -11,20 +11,20 @@ npm install
 cd dev/ && npm install
 ```
 
-##Start project dev
+## Start project dev
 
 ```
 npm run server:dev
 npm run front:dev
 ```
 
-##Build project
+## Build project
 
 ```
 npm run front:build
 ```
 
-##Production start
+## Production start
 
 ```
 npm run start
