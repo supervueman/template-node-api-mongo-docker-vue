@@ -3,6 +3,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+/**
+ * @module
+ * @function signup
+ * @var {Object} user
+ * @var {Object} result
+ */
 exports.signup = (req, res, next) => {
 	bcrypt.hash(req.body.password, 10, async (err, hash) => {
 		const user = new User({
@@ -10,7 +16,9 @@ exports.signup = (req, res, next) => {
 			email: req.body.email,
 			password: hash
 		});
-		let result = await user.save();
+
+		const result = await user.save();
+
 		if (result._id) {
 			return res.status(201).json({
 				message: 'Reqistration success'
@@ -26,17 +34,20 @@ exports.signin = async (req, res, next) => {
 	const user = await User.findOne({
 		email: req.body.email
 	}).exec();
+
 	if (!user) {
 		return res.status(401).send({
 			message: 'Auth failed'
 		});
 	}
+
 	bcrypt.compare(req.body.password, user.password, (err, result) => {
 		if (err !== undefined) {
 			return res.status(401).send({
 				message: 'Auth failed'
 			});
 		}
+
 		if (result) {
 			const token = jwt.sign({
 					userId: user._id
@@ -45,15 +56,19 @@ exports.signin = async (req, res, next) => {
 					expiresIn: '1h'
 				}
 			);
+
 			user.password = '';
+
 			return res.status(200).send({
 				message: 'Auth successful',
 				token: token
 			});
+		} else {
+			return res.status(401).send({
+				message: 'Auth failed'
+			});
 		}
-		res.status(401).send({
-			message: 'Auth failed'
-		});
+
 	});
 	res.status(500).send({
 		error: err
@@ -79,7 +94,7 @@ exports.profile = (req, res) => {
 	jwt.verify(token, 'stopsecretkeyahtung', async (err, decoded) => {
 		if (err) {
 			return res
-				.status(500)
+				.status(422)
 				.send({
 					auth: false,
 					message: 'Failed to authenticate token.'
