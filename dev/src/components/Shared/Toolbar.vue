@@ -4,29 +4,29 @@
       common-link(
         link="/signin"
         text="Sign in"
-        @click="isSignIn = true; isSignUp = false"
-        v-if="!profile"
+        v-if="profileId === ''"
       ) Sign In
       common-link(
         link="/signup"
         text="Sign up"
-        @click="isSignIn = false; isSignUp = true"
-        v-if="!profile"
+        v-if="profileId === ''"
       ) Sign Up
-      a(class="btn flat" @click="logout" v-if="profile") Logout
+      div(class="link" @click="logout" v-if="profileId !== ''") Logout
 </template>
 
 <script>
 export default {
   name: "Toolbar",
-  computed: {
-    profile() {
-      return this.$store.getters.getProfile;
+  props: {
+    profileId: {
+      type: String,
+      default: ""
     }
   },
   methods: {
     async logout() {
-      await this.$store.dispatch("logout");
+      await this.$store.dispatch("authenticate/logout");
+      this.$router.push("/signin");
     }
   }
 };

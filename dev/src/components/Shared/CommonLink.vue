@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  name: "CommonLink",
   props: {
     link: {
       type: String,

@@ -1,10 +1,11 @@
 import axios from 'axios';
-import router from '@/routers';
 
 export const authenticate = {
   namespaced: true,
   state: {
-    profile: null
+    profile: {
+      _id: ''
+    }
   },
   mutations: {
     setProfile(state, payload) {
@@ -53,7 +54,6 @@ export const authenticate = {
       if (res) {
         if (res.status === 200) {
           commit('setProfile', res.data);
-          router.push('/profile');
         }
       }
     },
@@ -69,9 +69,10 @@ export const authenticate = {
       });
       if (res) {
         if (res.status === 200) {
-          localStorage.setItem('access_token', res.data.token);
-          commit('setProfile', null);
-          router.push('/');
+          localStorage.removeItem('access_token');
+          commit('setProfile', {
+            _id: ''
+          });
         }
       }
     }
