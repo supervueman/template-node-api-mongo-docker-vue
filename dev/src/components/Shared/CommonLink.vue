@@ -1,5 +1,5 @@
 <template lang="pug">
-  router-link(:to="link" class="link") {{text}}
+  router-link.link(:to="link") {{text}}
 </template>
 
 <script>

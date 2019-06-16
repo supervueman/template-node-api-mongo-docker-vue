@@ -1,6 +1,6 @@
 <template lang="pug">
-  header(class="toolbar")
-    div(class="container d-flex content-end")
+  header.toolbar
+    .container.d-flex.content-end
       common-link(
         link="/signin"
         text="Sign in"
@@ -11,7 +11,10 @@
         text="Sign up"
         v-if="profileId === ''"
       ) Sign Up
-      div(class="link" @click="logout" v-if="profileId !== ''") Logout
+      .link(
+        @click="logout"
+        v-if="profileId !== ''"
+      ) Logout
 </template>
 
 <script>

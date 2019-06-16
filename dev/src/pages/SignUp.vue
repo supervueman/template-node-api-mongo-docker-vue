@@ -1,11 +1,22 @@
 <template lang="pug">
-  div(class="sign-up" id="auth")
-    h1(class="h1") Registration
-    div(class="form-group")
-      input(type="text" name="email" placeholder="email" v-model="email")
-    div(class="form-group")
-      input(type="text" name="password" placeholder="password" v-model="password")
-    button(class="btn" @click="signUp") Sign Up
+  #auth.sign-up
+    .container
+      h1.h1 Registration
+      .form-group
+        input(
+          type="text"
+          name="email"
+          placeholder="email"
+          v-model="email"
+        )
+      .form-group
+        input(
+          type="text"
+          name="password"
+          placeholder="password"
+          v-model="password"
+        )
+      button.btn(@click="signUp") Sign Up
 </template>
 
 <script>

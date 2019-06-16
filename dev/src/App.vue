@@ -32,5 +32,8 @@ export default {
   .view
     // Margin/Padding block
     padding-top: 80px
+    
+    // Size block
+    width: 100%
 </style>
 
