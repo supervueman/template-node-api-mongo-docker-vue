@@ -36,7 +36,7 @@ export const authenticate = {
         console.error(err)
       });
       localStorage.setItem('access_token', res.data.token);
-      this.dispatch('fetchProfile');
+      this.dispatch('authenticate/fetchProfile');
     },
 
     async fetchProfile({
