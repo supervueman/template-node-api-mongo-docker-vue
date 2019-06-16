@@ -1,6 +1,6 @@
 <template lang="pug">
   header(class="toolbar")
-    div(class="container d-flex content-end")
+    div(class="container")
       router-link(
         to="/signin"
         class="btn flat"
@@ -31,3 +31,25 @@ export default {
   }
 };
 </script>
+
+<style lang="sass">
+.toolbar
+  // Position block
+  position: fixed
+  top: 0
+  left: 0
+
+  // Size block
+  width: 100%
+  height: 50px
+  
+  // Display block
+  display: flex
+  align-items: center
+  justify-content: flex-start
+
+  // Other
+  background-color: #d82dff
+
+</style>
+
