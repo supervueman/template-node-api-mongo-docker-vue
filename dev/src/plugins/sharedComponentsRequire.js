@@ -2,11 +2,8 @@ import Vue from 'vue';
 
 export default () => {
   const requireComponent = require.context(
-    // Относительный путь до каталога компонентов
-    '@/components/Shared',
-    // Обрабатывать или нет подкаталоги
+    '@/components/Common',
     false,
-    // Регулярное выражение для определения файлов базовых компонентов
     /[A-Z]\w+\.(vue)$/
   )
 
