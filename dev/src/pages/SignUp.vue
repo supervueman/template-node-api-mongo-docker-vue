@@ -17,18 +17,14 @@ export default {
       email: ""
     };
   },
-  computed: {
-    profile() {
-      return this.$store.getters.getProfile;
-    }
-  },
   methods: {
-    signUp() {
+    async signUp() {
       const data = {
         password: this.password,
         email: this.email
       };
-      this.$store.dispatch("authenticate/signUp", data);
+      await this.$store.dispatch("authenticate/signUp", data);
+      this.$router.push("/signin");
     }
   }
 };
