@@ -1,15 +1,15 @@
 <template lang="pug">
   header(class="toolbar")
-    div(class="container")
-      router-link(
-        to="/signin"
-        class="btn flat"
+    div(class="container d-flex content-end")
+      common-link(
+        link="/signin"
+        text="Sign in"
         @click="isSignIn = true; isSignUp = false"
         v-if="!profile"
       ) Sign In
-      router-link(
-        to="/signup"
-        class="btn flat"
+      common-link(
+        link="/signup"
+        text="Sign up"
         @click="isSignIn = false; isSignUp = true"
         v-if="!profile"
       ) Sign Up
@@ -25,8 +25,8 @@ export default {
     }
   },
   methods: {
-    logout() {
-      this.$store.dispatch("logout");
+    async logout() {
+      await this.$store.dispatch("logout");
     }
   }
 };
@@ -48,8 +48,8 @@ export default {
   align-items: center
   justify-content: flex-start
 
-  // Other
-  background-color: #d82dff
+  // Color block
+  background-color: #030823
 
 </style>
 
