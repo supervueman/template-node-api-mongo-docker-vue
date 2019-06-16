@@ -9,7 +9,9 @@
 export default {
   name: "App",
   beforeCreate() {
-    this.$store.dispatch("fetchProfile");
+    if (localStorage.getItem("access_token") !== "") {
+      this.$store.dispatch("authenticate/fetchProfile");
+    }
   }
 };
 </script>

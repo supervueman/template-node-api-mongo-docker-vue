@@ -8,7 +8,7 @@ export default {
   name: "Profile",
   computed: {
     profile() {
-      return this.$store.getters.getProfile;
+      return this.$store.getters["authenticate/getProfile"];
     }
   }
 };

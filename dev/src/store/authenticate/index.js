@@ -2,6 +2,7 @@ import axios from 'axios';
 import router from '@/routers';
 
 export const authenticate = {
+  namespaced: true,
   state: {
     profile: null
   },

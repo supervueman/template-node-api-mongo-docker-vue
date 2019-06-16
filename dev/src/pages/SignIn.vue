@@ -28,7 +28,7 @@ export default {
         password: this.password,
         email: this.email
       };
-      this.$store.dispatch("signIn", data);
+      this.$store.dispatch("authenticate/signIn", data);
     }
   }
 };
